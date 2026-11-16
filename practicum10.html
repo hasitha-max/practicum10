@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CraftSphere - DOM Manipulation</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #fff3e0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #8d4e27;
+        }
+
+        button {
+            background-color: #8d4e27;
+            color: white;
+            padding: 10px;
+            border: none;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        #tips {
+            color: #a0522d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="heading">CraftSphere</h1>
+    <h3>Creative Handmade Crafts and DIY Ideas</h3>
+
+    <h3>Crafting Tips</h3>
+
+    <p id="tips">Click the button to see crafting tips.</p>
+
+    <button onclick="showTip()">Show Tip</button>
+
+    <h3>Crafting Help Form</h3>
+
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <select id="category">
+        <option value="">Select Category</option>
+        <option value="Paper Crafts">Paper Crafts</option>
+        <option value="DIY Crafts">DIY Crafts</option>
+        <option value="Home Decoration">Home Decoration</option>
+        <option value="Painting">Painting</option>
+    </select>
+
+    <button onclick="submitForm()">Submit</button>
+
+    <p id="result"></p>
+
+    <h3>Automatic Crafting Tips</h3>
+
+    <button onclick="startTips()">Start Tips</button>
+    <button onclick="stopTips()">Stop Tips</button>
+
+    <button onclick="showMessage()">Show Delayed Message</button>
+    <button onclick="cancelMessage()">Cancel Message</button>
+
+    <script>
+
+        // Query Selector
+        document.querySelector("#heading").innerHTML =
+            "Welcome to CraftSphere!";
+
+        // onclick and DOM manipulation
+        function showTip() {
+            document.getElementById("tips").innerHTML =
+                "Be creative and reuse materials to make beautiful crafts.";
+        }
+
+        // Interactive Form
+        function submitForm() {
+            let name = document.getElementById("name").value;
+            let category = document.getElementById("category").value;
+
+            if (name == "" || category == "") {
+                document.getElementById("result").innerHTML =
+                    "Please fill all the fields.";
+            }
+            else {
+                document.getElementById("result").innerHTML =
+                    "Hello " + name + "! Your interest is " + category;
+            }
+        }
+
+        // setInterval and clearInterval
+        let interval;
+
+        function startTips() {
+            clearInterval(interval);
+
+            interval = setInterval(function() {
+                document.getElementById("tips").innerHTML =
+                    "Keep creating and exploring new craft ideas!";
+            }, 3000);
+        }
+
+        function stopTips() {
+            clearInterval(interval);
+        }
+
+        // setTimeout and clearTimeout
+        let timeout;
+
+        function showMessage() {
+            timeout = setTimeout(function() {
+                alert("Thank you for visiting CraftSphere!");
+            }, 3000);
+        }
+
+        function cancelMessage() {
+            clearTimeout(timeout);
+        }
+
+    </script>
+
+</body>
+</html>
